@@ -1,0 +1,15 @@
+{
+  "name": "DOM",
+  "version": "0.1.0",
+  "description": "A JavaScript Framework for querying and changing DOM.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://szaranger@bitbucket.org/szaranger/domjs.git"
+  },
+  "author": "Sean Amarasinghe",
+  "license": "ISC"
+}

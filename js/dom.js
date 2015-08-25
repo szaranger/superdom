@@ -20,6 +20,7 @@ DOM = (function () {
 			this.tags.push(this[i].tagName);
   	}
 
+    this.callee = els.callee;
     this.length = els.length;
 	}
 
@@ -95,7 +96,34 @@ DOM = (function () {
 		});
 	};
 
-	function getQuerySelectors() {
+	Dom.prototype.addClass = function (className) {
+		var tags;
+
+		if(this.callee === 'get') {
+			document.getElementById(this.ids[0]).classList.add(className);
+		} else {
+			if(this.tags.length > 0) {
+				tags = document.querySelectorAll(this.tags);
+				tags = Array.prototype.slice.call(tags);
+
+				tags.forEach(function(tag) {
+					tag.classList.add(className);
+				});
+			}
+		}
+	};
+
+	Dom.prototype.removeClass = function (className) {
+		var tags = document.querySelectorAll(this.tags);
+
+		tags = Array.prototype.slice.call(tags);
+
+		tags.forEach(function(tag) {
+			tag.classList.remove(className);
+		});
+	};
+
+	function getQuerySelectors () {
 		var target,
 			prefix,
 			selectors;
@@ -119,13 +147,25 @@ DOM = (function () {
 
 	var dom = {
 		query: function (selector) {
-			var el = document.querySelectorAll(selector);
-			return new Dom(el);
+			var el,
+				dom;
+
+			el = document.querySelectorAll(selector);
+			dom = new Dom(el);
+			dom.callee = 'query';
+
+			return dom;
 		},
 
 		get: function (id) {
-			var el = document.getElementById(id);
-			return new Dom([el]);
+			var el,
+				dom;
+
+			el = document.getElementById(id);
+			dom = new Dom([el]);
+			dom.callee = 'get';
+
+			return dom;
 		}
 	}
 
