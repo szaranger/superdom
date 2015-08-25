@@ -86,6 +86,15 @@ DOM = (function () {
 		return this[0];
 	};
 
+	Dom.prototype.hasClass = function (className) {
+		return this.classes.some(function(cls) {
+			if(cls === className) {
+				return true;
+			}
+			return false;
+		});
+	};
+
 	function getQuerySelectors() {
 		var target,
 			prefix,
