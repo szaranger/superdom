@@ -79,7 +79,6 @@ DOM = (function () {
 				});
 				return result;
 			}
-
 		}
 	},
 
@@ -121,6 +120,40 @@ DOM = (function () {
 		tags.forEach(function(tag) {
 			tag.classList.remove(className);
 		});
+	};
+
+	Dom.prototype.attr = function(attr, val) {
+		var tags,
+			el,
+			vals = [];
+
+			if(this.callee === 'get') {
+				if(val) {
+					el = document.getElementById(this.ids[0]);
+					if(el.hasAttribute(attr)) {
+						el.setAttribute(attr, val);
+					}
+				} else {
+					return document.getElementById(this.ids[0]).getAttribute(attr);
+				}
+			} else {
+				if(this.tags.length > 0) {
+					tags = document.querySelectorAll(this.tags);
+					tags = Array.prototype.slice.call(tags);
+
+					tags.forEach(function(tag) {
+						if(val) {
+								tag.setAttribute(attr, val);
+						} else {
+							vals.push(tag.getAttribute(attr));
+						}
+					});
+
+					if(!val) {
+						return vals;
+					}
+				}
+			}
 	};
 
 	function getQuerySelectors () {
