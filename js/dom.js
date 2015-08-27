@@ -156,6 +156,22 @@ DOM = (function () {
 			}
 	};
 
+	Dom.prototype.append = function(els) {
+		var tags,
+			children = els;
+
+		tags = document.querySelectorAll(this.tags);
+		children = document.querySelectorAll(els.tags);
+		tags = Array.prototype.slice.call(tags);
+		children = Array.prototype.slice.call(children);
+
+		tags.forEach(function(el, i) {
+			children.forEach(function(child) {
+				el.appendChild(child);
+			});
+		});
+	},
+
 	function getQuerySelectors () {
 		var target,
 			prefix,
