@@ -1,13 +1,13 @@
 DOM = (function () {
 	'use strict';
 
-	function Dom(els) {
+	function Dom(elements) {
 		this.ids = [];
 		this.classes = [];
 		this.tags = [];
 
-		for(var i = 0; i < els.length; i++ ) {
-			this[i] = els[i];
+		for(var i = 0; i < elements.length; i++ ) {
+			this[i] = elements[i];
 
       if (this[i].hasAttribute('id')) {
       	this.ids.push(this[i].getAttribute('id'));
@@ -20,8 +20,9 @@ DOM = (function () {
 			this.tags.push(this[i].tagName);
   	}
 
-    this.callee = els.callee;
-    this.length = els.length;
+    this.elements = elements;
+    this.callee = elements.callee;
+    this.length = elements.length;
 	}
 
 	Dom.prototype.html = function () {
@@ -82,7 +83,7 @@ DOM = (function () {
 		}
 	},
 
-	Dom.prototype.first = function (el) {
+	Dom.prototype.first = function () {
 		return this[0];
 	};
 
@@ -156,20 +157,35 @@ DOM = (function () {
 			}
 	};
 
-	Dom.prototype.append = function(els) {
-		var tags,
-			children = els;
+	Dom.prototype.append = function(elements) {
+		var parents,
+			children,
+			fragment,
+			temp,
+			child;
 
-		tags = document.querySelectorAll(this.tags);
-		children = document.querySelectorAll(els.tags);
-		tags = Array.prototype.slice.call(tags);
-		children = Array.prototype.slice.call(children);
+		if(elements) {
+			parents = Array.prototype.slice.call(this.elements);
 
-		tags.forEach(function(el, i) {
-			children.forEach(function(child) {
-				el.appendChild(child);
+			parents.forEach(function(parent, i) {
+				if(typeof elements === 'string') {
+					fragment = document.createDocumentFragment();
+					temp = document.createElement('body');
+					temp.innerHTML = elements;
+
+					while(child = temp.firstElementChild) {
+						fragment.appendChild(child);
+					}
+					parent.appendChild(fragment);
+				} else {
+					children = Array.prototype.slice.call(elements.elements);
+
+					children.forEach(function(child) {
+						parent.appendChild(child);
+					});
+				}
 			});
-		});
+		}
 	},
 
 	function getQuerySelectors () {
