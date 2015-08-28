@@ -124,37 +124,24 @@ DOM = (function () {
 	};
 
 	Dom.prototype.attr = function(attr, val) {
-		var tags,
-			el,
-			vals = [];
+		var values = [],
+			elements;
 
-			if(this.callee === 'get') {
+		elements =  Array.prototype.slice.call(this.elements);
+
+		if(attr && elements.length > 0) {
+			elements.forEach(function(element) {
 				if(val) {
-					el = document.getElementById(this.ids[0]);
-					if(el.hasAttribute(attr)) {
-						el.setAttribute(attr, val);
-					}
+					element.setAttribute(attr, val);
 				} else {
-					return document.getElementById(this.ids[0]).getAttribute(attr);
+					values.push(element.getAttribute(attr));
 				}
-			} else {
-				if(this.tags.length > 0) {
-					tags = document.querySelectorAll(this.tags);
-					tags = Array.prototype.slice.call(tags);
+			});
 
-					tags.forEach(function(tag) {
-						if(val) {
-								tag.setAttribute(attr, val);
-						} else {
-							vals.push(tag.getAttribute(attr));
-						}
-					});
-
-					if(!val) {
-						return vals;
-					}
-				}
+			if(!val) {
+				return this.callee === 'get' ? values[0] : values;
 			}
+		}
 	};
 
 	Dom.prototype.append = function(elements) {
