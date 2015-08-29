@@ -7,14 +7,15 @@ module.exports = function(grunt) {
           separator: ';'
         },
         src: [
-          'javascript/*.js'
+          'src/js/*.js'
         ],
         dest: 'public/js/main.min.js'
       },
     },
     uglify: {
       options: {
-        mangle: false
+        mangle: true,
+        sourceMap: true
       },
       js: {
         files: {
@@ -23,8 +24,8 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      js: {
-        files: ['javascript/*.js'],
+      scripts: {
+        files: ['src/js/*.js'],
         tasks: ['concat:js', 'uglify:js'],
         options: {
           livereload: true,
@@ -35,7 +36,7 @@ module.exports = function(grunt) {
       app: {
         options: {
           port: 9001,
-          base: './',
+          base: './public',
           middleware: function(connect, options, middlewares) {
             middlewares.unshift(require('connect-livereload')());
             return middlewares;

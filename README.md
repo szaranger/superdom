@@ -6,6 +6,6 @@ sudo npm install grunt -g grunt-cli
 Run
 ===
 
-grunt watch
+grunt serve
 
 http://localhost:35729
