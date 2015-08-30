@@ -105,7 +105,7 @@ DOM = (function () {
 			child;
 
 		if(elements) {
-			parents = Array.prototype.slice.call(this.elements);
+			parents = this.elements;
 
 			parents.forEach(function(parent, i) {
 				if(typeof elements === 'string') {
@@ -122,6 +122,30 @@ DOM = (function () {
 
 					children.forEach(function(child) {
 						parent.appendChild(child);
+					});
+				}
+			});
+		}
+	};
+
+	Dom.prototype.prepend = function(elements) {
+		var parents,
+			children,
+			fragment,
+			temp,
+			child;
+
+		if(elements) {
+			parents = this.elements;
+
+			parents.forEach(function(parent, i) {
+				if(typeof elements === 'string') {
+					parent.insertAdjacentHTML('afterbegin', elements);
+				} else {
+					children = elements.elements;
+
+					children.forEach(function(child) {
+						parent.insertAdjacentHTML('afterbegin', child);
 					});
 				}
 			});
