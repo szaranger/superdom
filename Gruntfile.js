@@ -4,18 +4,21 @@ module.exports = function(grunt) {
     concat: {
       js: {
         options: {
-          separator: ';'
+          separator: ';',
+          sourceMap: true
         },
         src: [
           'src/js/*.js'
         ],
         dest: 'public/js/main.min.js'
-      },
+      }
     },
     uglify: {
       options: {
         mangle: true,
-        sourceMap: true
+        sourceMap: true,
+        sourceMapIncludeSources : true,
+        sourceMapIn : 'public/js/main.min.js.map'
       },
       js: {
         files: {

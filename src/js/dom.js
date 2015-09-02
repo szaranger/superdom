@@ -47,7 +47,7 @@ DOM = (function () {
 		});
 
 		children =  new Dom(children);
-		
+
 		return this.callee === 'get' ? children.first() : children;
 	},
 
@@ -79,7 +79,7 @@ DOM = (function () {
 				}
 			});
 
-			return value ?
+			return !value ?
 				(this.callee === 'get' ? styles[0] : styles) : new Dom(this.elements);
 		}
 	},
@@ -96,6 +96,7 @@ DOM = (function () {
 				element.classList.add(className);
 			});
 		}
+		return new Dom(this.elements);
 	};
 
 	Dom.prototype.removeClass = function (className) {
@@ -108,6 +109,7 @@ DOM = (function () {
 				}
 			});
 		}
+		return new Dom(this.elements);
 	};
 
 	Dom.prototype.attr = function(attr, val) {
