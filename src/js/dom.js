@@ -16,20 +16,6 @@ DOM = (function () {
 		return this.callee === 'get' ? result[0] : result;
 	};
 
-	Dom.prototype.replace = function (element) {
-		if(element) {
-			this.elements.forEach(function (target) {
-				target.outerHTML = element[0].outerHTML;
-			});
-		}
-	};
-
-	Dom.prototype.remove = function () {
-		this.elements.forEach(function (target) {
-			target.outerHTML = null;
-		});
-	};
-
 	Dom.prototype.text = function (text) {
 		var result = [];
 
@@ -44,6 +30,32 @@ DOM = (function () {
 			return this.callee === 'get' ? result[0] : result;
 		}
 	},
+
+	Dom.prototype.replace = function (element) {
+		if(element) {
+			this.elements.forEach(function (target) {
+				target.outerHTML = element[0].outerHTML;
+			});
+		}
+	};
+
+	Dom.prototype.children = function() {
+		var children = [];
+
+		this.elements.forEach(function (element) {
+			children.push(element.children);
+		});
+
+		children =  new Dom(children);
+		
+		return this.callee === 'get' ? children.first() : children;
+	},
+
+	Dom.prototype.remove = function () {
+		this.elements.forEach(function (target) {
+			target.outerHTML = null;
+		});
+	};
 
 	Dom.prototype.first = function () {
 		return this[0];
@@ -67,7 +79,8 @@ DOM = (function () {
 				}
 			});
 
-			return value ? (this.callee === 'get' ? styles[0] : styles) : undefined;
+			return value ?
+				(this.callee === 'get' ? styles[0] : styles) : new Dom(this.elements);
 		}
 	},
 
