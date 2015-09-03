@@ -46,6 +46,12 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+    jasmine: {
+      src: 'src/js/*.js',
+      options: {
+        specs: 'spec/*.js'
+      }
     }
   });
 
@@ -53,7 +59,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
 
-  grunt.registerTask('serve', [ 'connect:app', 'watch' ]);
+  grunt.registerTask('serve', ['connect:app', 'watch']);
+  grunt.registerTask('test', ['jasmine']);
 
  };
