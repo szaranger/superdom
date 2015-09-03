@@ -8,4 +8,8 @@ npm install
 
 ## Run
 
-grunt serve
+npm run
+
+## Run Tests
+
+npm test
