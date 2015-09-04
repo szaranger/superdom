@@ -24,7 +24,7 @@
     }
 
     var el = document.createElement('div');
-    el.id = 'Target';
+    el.id = id;
     document.body.appendChild(el)
   }
 
