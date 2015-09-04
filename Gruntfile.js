@@ -50,7 +50,8 @@ module.exports = function(grunt) {
     jasmine: {
       src: 'src/js/*.js',
       options: {
-        specs: 'spec/*.js'
+        specs: 'spec/*Spec.js',
+        helpers: 'spec/helper.js'
       }
     }
   });

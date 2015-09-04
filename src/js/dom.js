@@ -51,9 +51,15 @@ DOM = (function () {
 		return this.callee === 'get' ? children.first() : children;
 	},
 
+	Dom.prototype.empty = function () {
+		this.elements.forEach(function (element) {
+			element.outerHTML = null;
+		});
+	};
+
 	Dom.prototype.remove = function () {
-		this.elements.forEach(function (target) {
-			target.outerHTML = null;
+		this.elements.forEach(function (element) {
+			element.parentNode.removeChild(element);
 		});
 	};
 
