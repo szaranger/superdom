@@ -37,4 +37,22 @@
     });
   });
 
+  describe("DOM.unwrap()", function() {
+    var result;
+
+    it("should remove parent", function() {
+      DOM.get('A').append(DOM.get('B'));
+      DOM.get('B').unwrap();
+      result = DOM.get('A');
+      expect(result.elements.length).toEqual(0);
+    });
+
+    it("should exist self", function() {
+      DOM.get('A').append(DOM.get('B'));
+      DOM.get('B').unwrap();
+      result = DOM.get('B');
+      expect(result.elements.length).toEqual(1);
+    });
+  });
+
 })();

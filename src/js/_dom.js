@@ -2,7 +2,7 @@ var Dom = (function () {
 	'use strict';
 
 	return function (elements) {
-		this.elements = Array.prototype.slice.call(elements);
+		this.elements = elements[0] ? Array.prototype.slice.call(elements) : [];
 		this.callee = elements.callee;
 	}
 
