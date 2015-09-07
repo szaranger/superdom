@@ -16,8 +16,20 @@ npm test
 
 --
 
-###DOM Removal
+## API Documentation
 
-####.unwrap()
+###Manipulation
+
+####Copying
+
+#####.clone()
+
+Create a deep copy of the set of matched elements.
+
+The `.clone()` method performs a deep copy of the set of matched elements, meaning that it copies the matched elements as well as all of their descendant elements and text nodes.
+
+####DOM Removal
+
+#####.unwrap()
 
 Remove the parents of the set of matched elements from the DOM, leaving the matched elements in their place.
