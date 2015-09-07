@@ -8,9 +8,7 @@
       children.push(element.children);
     });
 
-    children = new Dom(children);
-
-    return this.callee === 'get' ? children.first() : children;
+    return new Dom(children);
   };
 
 })();

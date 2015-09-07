@@ -2,11 +2,15 @@
   'use strict';
 
   Dom.prototype.first = function() {
-    return this[0];
+    var elements = this.elements;
+
+    return elements ? elements[0][0] : this[0][0];
   };
 
   Dom.prototype.last = function() {
-    return this[this.elements.length - 1];
+    var elements = this.elements;
+
+    return elements ? elements[this.elements.length - 1] : this[this.length - 1];
   };
-  
+
 })();
