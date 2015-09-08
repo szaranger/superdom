@@ -32,6 +32,20 @@ DOM = (function () {
 			dom.callee = 'get';
 
 			return dom;
+		},
+
+		create: function (html) {
+			var parser = new DOMParser(),
+				el,
+				dom;
+
+			if(html && typeof html === 'string') {
+				el = parser.parseFromString(html, "text/xml").firstChild;
+				dom = new Dom([el]);
+				dom.callee = 'create';
+			}
+
+			return dom;
 		}
 	};
 
