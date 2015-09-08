@@ -13,7 +13,7 @@
     it("should clone matching elements", function() {
       DOM.get('C').append(DOM.query('#A').clone());
       result = DOM.get('C').children().first();
-      expect(result.outerHTML).toEqual('<div id="A">A</div>');
+      expect(DOM.get('C').children().outerHTML).toEqual(DOM.get('A').elements.outerHTML);
     });
   });
 
