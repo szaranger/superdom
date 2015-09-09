@@ -14,7 +14,7 @@ npm run
 
 npm test
 
---
+---
 
 ## API Documentation
 
@@ -28,12 +28,16 @@ Create a deep copy of the set of matched elements.
 
 The `.clone()` method performs a deep copy of the set of matched elements, meaning that it copies the matched elements as well as all of their descendant elements and text nodes.
 
-####DOM Removal
+####Events
+
+Bind an event handler to the `click` JavaScript event, or trigger that event on an element.
+
+####Removal
 
 #####.unwrap()
 
 Remove the parents of the set of matched elements from the DOM, leaving the matched elements in their place.
 
-####DOM Replacement
+####Replacement
 
 Replace each target element with the set of matched elements.

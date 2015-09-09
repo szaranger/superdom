@@ -7,11 +7,27 @@
     it("should fire callback function", function() {
       DOM.get('Apply').click(function() {
         DOM.query('.group').empty();
-        result = DOM.query('.group').html();
       });
-      fireEvent(document.getElementById('Apply'),'click');
-      expect(result.length).toEqual(0);
+      setTimeout(function(){
+        fireEvent(document.getElementById('Apply'),'click');
+        result = DOM.query('.group').html();
+        expect(result.length).toEqual(0);
+      }, 1000);
     });
+
+    function fireEvent(target, event){
+       var evObj;
+
+       if( document.createEvent ) {
+         evObj = document.createEvent('MouseEvents');
+         evObj.initEvent( event, true, false );
+         target.dispatchEvent( evObj );
+       }
+        else if( document.createEventObject ) { //IE
+         evObj = document.createEventObject();
+         target.fireEvent( 'on' + event, evObj );
+       }
+     }
 
   });
 
