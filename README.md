@@ -30,7 +30,13 @@ The `.clone()` method performs a deep copy of the set of matched elements, meani
 
 ####Events
 
+#####.click()
+
 Bind an event handler to the `click` JavaScript event, or trigger that event on an element.
+
+#####.dblclick()
+
+Bind an event handler to the `dblclick` JavaScript event, or trigger that event on an element.
 
 ####Removal
 

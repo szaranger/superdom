@@ -7,4 +7,10 @@
     });
   };
 
+  Dom.prototype.dblclick = function(callback) {
+    this.elements.forEach(function (element) {
+      element.ondblclick = callback;
+    });
+  };
+
 })();
