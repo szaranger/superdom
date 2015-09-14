@@ -14,21 +14,6 @@
         expect(result.length).toEqual(0);
       }, 1000);
     });
-
-    function fireEvent(target, event){
-       var evObj;
-
-       if( document.createEvent ) {
-         evObj = document.createEvent('MouseEvents');
-         evObj.initEvent( event, true, false );
-         target.dispatchEvent( evObj );
-       }
-        else if( document.createEventObject ) { //IE
-         evObj = document.createEventObject();
-         target.fireEvent( 'on' + event, evObj );
-       }
-     }
-
   });
 
   describe("DOM.get(<selector>).dblclick()", function() {
@@ -44,21 +29,20 @@
         expect(result.length).toEqual(0);
       }, 1000);
     });
-
-    function fireEvent(target, event){
-       var evObj;
-
-       if( document.createEvent ) {
-         evObj = document.createEvent('MouseEvents');
-         evObj.initEvent( event, true, false );
-         target.dispatchEvent( evObj );
-       }
-        else if( document.createEventObject ) { //IE
-         evObj = document.createEventObject();
-         target.fireEvent( 'on' + event, evObj );
-       }
-     }
-
   });
+
+  function fireEvent(target, event) {
+     var evObj;
+
+     if( document.createEvent ) {
+       evObj = document.createEvent('MouseEvents');
+       evObj.initEvent( event, true, false );
+       target.dispatchEvent( evObj );
+     }
+      else if( document.createEventObject ) { //IE
+       evObj = document.createEventObject();
+       target.fireEvent( 'on' + event, evObj );
+     }
+   }
 
 })();

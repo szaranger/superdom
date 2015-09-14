@@ -38,6 +38,22 @@ Bind an event handler to the `click` JavaScript event, or trigger that event on 
 
 Bind an event handler to the `dblclick` JavaScript event, or trigger that event on an element.
 
+#####.hover()
+
+Bind one or two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements.
+
+#####.mousedown()
+
+Bind an event handler to the “mousedown” JavaScript event, or trigger that event on an element.
+
+#####.mouseenter()
+
+Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.
+
+#####.mouseleave()
+
+Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.
+
 ####Removal
 
 #####.unwrap()

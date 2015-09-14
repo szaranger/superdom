@@ -6,9 +6,11 @@
 
     it("should replace matching elements", function() {
       DOM.create('<div id="G"><h1>Hello</h1></div>').replaceAll(DOM.query('.group'));
+
       setTimeout(function(){
         result = DOM.query('#G');
         expect(result.elements.length).toEqual(2);
+        done(); 
       }, 1000);
     });
 
