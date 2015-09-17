@@ -54,6 +54,9 @@ Bind an event handler to be fired when the mouse enters an element, or trigger t
 
 Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.
 
+#####.mousemove()
+Bind an event handler to the “mousemove” JavaScript event, or trigger that event on an element.
+
 ####Removal
 
 #####.unwrap()
@@ -63,3 +66,5 @@ Remove the parents of the set of matched elements from the DOM, leaving the matc
 ####Replacement
 
 Replace each target element with the set of matched elements.
+
+####Platform

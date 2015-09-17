@@ -38,4 +38,28 @@
     });
   };
 
+  Dom.prototype.mousemove = function(callback) {
+    this.elements.forEach(function (element) {
+      element.onmousemove = callback;
+    });
+  };
+
+  Dom.prototype.mouseout = function(callback) {
+    this.elements.forEach(function (element) {
+      element.onmouseout = callback;
+    });
+  };
+
+  Dom.prototype.mouseover = function(callback) {
+    this.elements.forEach(function (element) {
+      element.onmouseover = callback;
+    });
+  };
+
+  Dom.prototype.mouseup = function(callback) {
+    this.elements.forEach(function (element) {
+      element.onmouseup = callback;
+    });
+  };
+
 })();

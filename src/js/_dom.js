@@ -47,7 +47,7 @@ DOM = (function () {
 
 			return dom;
 		}
-	};
+};
 
 	return dom;
 })();
