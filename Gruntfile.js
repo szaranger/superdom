@@ -8,9 +8,9 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         src: [
-          'src/js/*.js'
+          'src/js/**/*.js'
         ],
-        dest: 'public/js/main.min.js'
+        dest: 'public/js/superdom.min.js'
       }
     },
     uglify: {
@@ -18,17 +18,17 @@ module.exports = function(grunt) {
         mangle: true,
         sourceMap: true,
         sourceMapIncludeSources : true,
-        sourceMapIn : 'public/js/main.min.js.map'
+        sourceMapIn : 'public/js/superdom.min.js.map'
       },
       js: {
         files: {
-          'public/js/main.min.js': ['public/js/main.min.js']
+          'public/js/superdom.min.js': ['public/js/superdom.min.js']
         }
       }
     },
     watch: {
       scripts: {
-        files: ['src/js/*.js'],
+        files: ['src/js/**/*.js'],
         tasks: ['concat:js', 'uglify:js'],
         options: {
           livereload: true,

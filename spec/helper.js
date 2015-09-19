@@ -4,7 +4,7 @@
   beforeEach(function() {
 
     var script = document.createElement('script');
-    script.setAttribute('src', 'public/js/main.min.js');
+    script.setAttribute('src', 'public/js/superdom.min.js');
 
     createTargetDiv('Target');
 

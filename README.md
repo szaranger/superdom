@@ -28,6 +28,22 @@ Create a deep copy of the set of matched elements.
 
 The `.clone()` method performs a deep copy of the set of matched elements, meaning that it copies the matched elements as well as all of their descendant elements and text nodes.
 
+###Effects
+
+####Sliding
+
+#####.slideDown()
+
+Display the matched elements with a sliding motion.
+
+#####.slideToggle()
+
+Display or hide the matched elements with a sliding motion.
+
+#####.slideUp()
+
+Hide the matched elements with a sliding motion.
+
 ####Events
 
 #####.click()
