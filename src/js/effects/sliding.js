@@ -88,6 +88,10 @@
         style.height = height + 'px';
         if (height < finalHeight) {
           setTimeout(tween, interval);
+        } else {
+          if(callback) {
+            callback();
+          }
         }
       } else {
         height -= heightIncrement;
@@ -97,15 +101,16 @@
         } else {
           style.display = 'none';
           style.height = elementHeight + 'px';
+          if(callback) {
+            callback();
+          }
         }
       }
     };
 
     tween();
 
-    if(callback) {
-      callback();
-    }
+    
   }
 
 })();

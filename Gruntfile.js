@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         src: [
           'src/js/**/*.js'
         ],
-        dest: 'public/js/superdom.min.js'
+        dest: 'public/js/main.min.js'
       }
     },
     uglify: {
@@ -18,11 +18,11 @@ module.exports = function(grunt) {
         mangle: true,
         sourceMap: true,
         sourceMapIncludeSources : true,
-        sourceMapIn : 'public/js/superdom.min.js.map'
+        sourceMapIn : 'public/js/main.min.js.map'
       },
       js: {
         files: {
-          'public/js/superdom.min.js': ['public/js/superdom.min.js']
+          'public/js/superdom.min.js': ['public/js/main.min.js']
         }
       }
     },
