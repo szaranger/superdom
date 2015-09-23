@@ -145,92 +145,59 @@ DOM = (function () {
 
 })();
 ;(function() {
-  'use strict';
+    'use strict';
 
-  Dom.prototype.animate = function(styles, duration, easing, callback) {
-    var values = [];
+    Dom.prototype.animate = function(styles, speed, callback) {
+      var values = [];
 
-    this.elements.forEach(function(element) {
-      if (styles) {
-        for (var property in styles) {
-          if (styles.hasOwnProperty(property)) {
-
-            if (typeof duration === 'string') {
-              if (duration === 'slow') {
-                duration = 150;
-              } else if (duration === 'fast') {
-                duration = 200;
-              } else {
-                duration = 400;
-              }
+      this.elements.forEach(function(element) {
+        if (styles) {
+          for (var property in styles) {
+            if (styles.hasOwnProperty(property)) {
+              console.log(styles[property]);
             }
-
-            animate({
-              delay: 10,
-              duration: duration || 400,
-              delta: function(progress) {
-                if (easing) {
-                  for (var property in easing) {
-                    switch (easing[property]) {
-                      case 'easeIn':
-                        progress = 1 - Math.sin(Math.acos(progress));
-                        break;
-                      case 'easeOut':
-                        progress = 1 - delta(1 - progress);
-                        break;
-                      case 'easeInOut':
-                        progress = progress < .5 ?
-                          delta(2 * progress) / 2 :
-                          (2 - delta(2 * (1 - progress))) / 2;
-                        break;
-                    }
-                  }
-                }
-                return progress;
-              },
-              step: function(delta) {
-                var oldValue = element.style[property].split('px')[0],
-                  calculatedValue = styles[property] * delta,
-                  newValue = styles[property];
-
-                if(oldValue < newValue && oldValue < calculatedValue) {
-                  element.style[property] = styles[property] * delta + "px";
-                } else {
-                  if(oldValue > newValue) {
-                    element.style[property] = oldValue - (styles[property] * delta) + "px";
-                  }
-                }
-              }
-            });
-
           }
         }
-      }
-    });
-  };
+      });
+    };
 
-  function animate(options) {
+    function animate(opts) {
 
-    var start = new Date(),
-      delta;
+      var start = new Date(),
+          delta;
 
-    var id = setInterval(function() {
-      var timePassed = new Date() - start;
-      var progress = timePassed / options.duration;
+      var id = setInterval(function() {
+        var timePassed = new Date() - start;
+        var progress = timePassed / opts.duration;
 
-      if (progress > 1) {
-        progress = 1;
-      }
+        if (progress > 1) {
+           progress = 1;
+        }
 
-      delta = options.delta(progress);
-      options.step(delta);
+        delta = opts.delta(progress);
+        opts.step(delta);
 
-      if (progress === 1) {
-        clearInterval(id);
-      }
-    }, options.delay || 10);
+        if (progress === 1) {
+          clearInterval(id);
+        }
+      }, opts.delay || 10);
 
-  }
+    }
+
+
+    function move(element, delta, duration) {
+      var to = 500;
+
+      animate({
+        delay: 10,
+        duration: duration || 1000, // 1 sec by default
+        delta: delta,
+        step: function(delta) {
+          element.style.left = to * delta + "px";
+        }
+      });
+
+    }
 
 })();
 ;(function() {
