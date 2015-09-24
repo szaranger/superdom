@@ -61,16 +61,18 @@
         }
       }
     });
+
+    return new Dom(this.elements);
   };
 
   function animate(options) {
-
     var start = new Date(),
-      delta;
+      delta,
+      id;
 
     var id = setInterval(function() {
-      var timePassed = new Date() - start;
-      var progress = timePassed / options.duration;
+      var timePassed = new Date() - start,
+        progress = timePassed / options.duration;
 
       if (progress > 1) {
         progress = 1;
