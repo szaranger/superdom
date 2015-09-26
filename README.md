@@ -10,6 +10,10 @@ npm install
 
 npm run
 
+## Browse
+
+http://localhost:9001
+
 ## Run Tests
 
 npm test
@@ -73,6 +77,9 @@ Bind an event handler to be fired when the mouse leaves an element, or trigger t
 #####.mousemove()
 Bind an event handler to the “mousemove” JavaScript event, or trigger that event on an element.
 
+#####.on()
+Bind an event handler function for one or more events to the selected elements.
+
 ####Removal
 
 #####.unwrap()
@@ -84,3 +91,11 @@ Remove the parents of the set of matched elements from the DOM, leaving the matc
 Replace each target element with the set of matched elements.
 
 ####Platform
+
+###Traversing
+
+####Tree Traversal
+
+#####.next()
+
+Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.

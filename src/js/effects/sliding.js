@@ -51,16 +51,7 @@
       duration = 10;
     }
 
-    if (typeof duration === 'string') {
-
-      if(duration === 'slow') {
-        duration = 600;
-      } else if (duration === 'fast') {
-        duration = 200;
-      } else {
-        duration = 400;
-      }
-    }
+    duration = Mixin.getDuration(duration, 400, 600, 200);
 
     totalFrames = duration / frameRate;
 
@@ -109,7 +100,6 @@
     };
 
     tween();
-
     
   }
 

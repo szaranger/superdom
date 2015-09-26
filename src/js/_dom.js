@@ -19,6 +19,7 @@ DOM = (function () {
 			el = document.querySelectorAll(selector);
 			dom = new Dom(el);
 			dom.callee = 'query';
+			dom.selector = selector;
 
 			return dom;
 		},
@@ -30,6 +31,7 @@ DOM = (function () {
 			el = document.getElementById(id);
 			dom = new Dom([el]);
 			dom.callee = 'get';
+			dom.selector = id;
 
 			return dom;
 		},

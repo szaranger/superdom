@@ -62,4 +62,10 @@
     });
   };
 
+  Dom.prototype.on = function(event, selector, callback) {
+    this.elements.forEach(function (element) {
+      element.addEventListener(event, callback, false);
+    });
+  };
+
 })();

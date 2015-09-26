@@ -2,33 +2,30 @@
   'use strict';
 
   Dom.prototype.fadeIn = function(duration, callback) {
-    var elements = [];
-
+      
     this.elements.forEach(function(element) {
       fade(element, duration, 'in', callback);
     });
 
-    return new Dom(elements);
+    return new Dom(this.elements);
   }
 
   Dom.prototype.fadeOut = function(duration, callback) {
-    var elements = [];
-
+      
     this.elements.forEach(function(element) {
       fade(element, duration, 'out', callback);
     });
 
-    return new Dom(elements);
+    return new Dom(this.elements);
   }
   
   Dom.prototype.fadeToggle = function(duration, callback) {
-    var elements = [];
-
+      
     this.elements.forEach(function(element) {
       toggle(element, duration, callback);
     });
 
-    return new Dom(elements);
+    return new Dom(this.elements);
   };
     
   function toggle (element, duration, callback) {
@@ -51,16 +48,7 @@
       duration = 10;
     }
 
-    if (typeof duration === 'string') {
-
-      if (duration === 'slow') {
-        duration = 150;
-      } else if (duration === 'fast') {
-        duration = 50;
-      } else {
-        duration = 100;
-      }
-    }
+    duration = Mixin.getDuration(duration, 100, 150, 50);
 
     totalFrames = duration / frameRate;
 

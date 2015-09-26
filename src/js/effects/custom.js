@@ -9,15 +9,7 @@
         for (var property in styles) {
           if (styles.hasOwnProperty(property)) {
 
-            if (typeof duration === 'string') {
-              if (duration === 'slow') {
-                duration = 150;
-              } else if (duration === 'fast') {
-                duration = 200;
-              } else {
-                duration = 400;
-              }
-            }
+            duration = Mixin.getDuration(duration, 400, 150, 400);  
 
             animate({
               delay: 10,
