@@ -99,3 +99,7 @@ Replace each target element with the set of matched elements.
 #####.next()
 
 Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.
+
+#####.prev()
+
+Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.
