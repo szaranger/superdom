@@ -32,7 +32,7 @@ DOM = (function () {
 			dom = new Dom([el]);
 			dom.callee = 'get';
 			dom.selector = id;
-
+ 
 			return dom;
 		},
 

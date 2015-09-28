@@ -21,15 +21,27 @@
     return result;
   };
 
-  Dom.prototype.next = function(selector) {
-    return getElementSibling.call(this, 'next', selector);
+  Dom.prototype.next = function(filter) {
+    return getElementSibling.call(this, 'next', filter, true);
   };
 
-  Dom.prototype.prev = function(selector) {
-    return getElementSibling.call(this, 'prev', selector);
+  Dom.prototype.prev = function(filter) {
+    return getElementSibling.call(this, 'prev', filter, true);
+  };
+     
+  Dom.prototype.nextAll = function(filter) {
+    return getElementSibling.call(this, 'next', filter);
   };
 
-  function getElementSibling(position, filter) {
+  Dom.prototype.prevAll = function(filter) {
+    return getElementSibling.call(this, 'prev', filter);
+  };
+
+  Dom.prototype.siblings = function(filter) {
+    return getAllElementSiblings.call(this, filter);
+  };
+
+  function getElementSibling(position, filter, isSingle) {
     var result = [],
       position = position || 'next',
       prefix = this.callee === 'get' ? '#' : '',
@@ -40,12 +52,34 @@
       selector.nextElementSibling : selector.previousElementSibling;
 
     if (sibling) {
-      sibling = filter ?
-        (sibling.outerHTML.indexOf(filter) > -1 ? sibling : undefined) : sibling;
-      result.push(sibling);
+         do {
+          sibling = filter ?
+            (sibling.outerHTML.indexOf(filter) > -1 ? sibling : undefined) : sibling;
+          result.push(sibling);
+          if(isSingle) {
+              break;
+          }
+        } while(sibling = sibling.nextElementSibling)
     }
 
     return new Dom(result);
+  }
+      
+  function getAllElementSiblings(filter) {
+    var result = [],
+        sibling;
+    
+    sibling = this.elements[0].parentNode.firstChild;
+    
+    do {
+      sibling = filter ?
+            (sibling.outerHTML.indexOf(filter) > -1 ? sibling : undefined) : sibling;
+      if(sibling !== this.elements[0]) {
+        result.push(sibling);
+      }   
+    } while (sibling = sibling.nextElementSibling)
+    
+    return new Dom(result);    
   }
 
 })();

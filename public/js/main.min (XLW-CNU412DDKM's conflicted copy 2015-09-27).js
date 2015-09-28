@@ -19,7 +19,6 @@ DOM = (function () {
 			el = document.querySelectorAll(selector);
 			dom = new Dom(el);
 			dom.callee = 'query';
-			dom.selector = selector;
 
 			return dom;
 		},
@@ -31,8 +30,7 @@ DOM = (function () {
 			el = document.getElementById(id);
 			dom = new Dom([el]);
 			dom.callee = 'get';
-			dom.selector = id;
- 
+
 			return dom;
 		},
 
@@ -529,12 +527,6 @@ DOM = (function () {
     });
   };
 
-  Dom.prototype.on = function(event, selector, callback) {
-    this.elements.forEach(function (element) {
-      element.addEventListener(event, callback, false);
-    });
-  };
-
 })();
 ;(function() {
   'use strict';
@@ -550,77 +542,6 @@ DOM = (function () {
 
     return elements ? elements[this.elements.length - 1] : this[this.length - 1];
   };
-
-})();
-;(function() {
-  'use strict';
-
-  Dom.prototype.attr = function(attr, val) {
-    var values = [];
-
-    if (attr && this.elements.length > 0) {
-      this.elements.forEach(function(element) {
-        if (val) {
-          element.setAttribute(attr, val);
-        } else {
-          values.push(element.getAttribute(attr));
-        }
-      });
-
-      if (!val) {
-        return this.callee === 'get' ? values[0] : values;
-      }
-    }
-  };
-
-})();
-;(function() {
-  'use strict';
-
-  Dom.prototype.clone = function () {
-    var elements = [];
-
-    this.elements.forEach(function(element) {
-      elements.push(element.cloneNode(true));
-    });
-    
-    return new Dom(elements);
-  };
-
-})();
-;(function() {
-  'use strict';
-
-  Dom.prototype.append = function(elements) {
-		var parents,
-			children,
-			fragment,
-			temp,
-			child;
-
-		if(elements) {
-			parents = this.elements;
-
-			parents.forEach(function(parent, i) {
-				if(typeof elements === 'string') {
-					fragment = document.createDocumentFragment();
-					temp = document.createElement('body');
-					temp.innerHTML = elements;
-
-					while(child = temp.firstElementChild) {
-						fragment.appendChild(child);
-					}
-					parent.appendChild(fragment);
-				} else {
-					children = elements.elements;
-
-					children.forEach(function(child) {
-						parent.appendChild(child);
-					});
-				}
-			});
-		}
-	};
 
 })();
 ;(function() {
@@ -674,64 +595,6 @@ DOM = (function () {
       });
     }
   };
-
-})();
-;(function() {
-  'use strict';
-
-  Dom.prototype.empty = function() {
-    this.elements.forEach(function(element) {
-      element.outerHTML = null;
-    });
-  };
-
-  Dom.prototype.remove = function() {
-    this.elements.forEach(function(element) {
-      element.parentNode.removeChild(element);
-    });
-  };
-
-  Dom.prototype.detach = function() {
-    var elements = [];
-
-    this.elements.forEach(function(element) {
-      elements.push(element);
-      element.parentNode.removeChild(element);
-    });
-
-    return elements;
-  };
-
-  Dom.prototype.unwrap = function() {
-    var parent;
-
-    this.elements.forEach(function(element) {
-      parent = element.parentNode;
-      parent.outerHTML = element.outerHTML;
-    });
-  };
-
-})();
-;(function() {
-  'use strict';
-
-  Dom.prototype.replaceWith = function (element) {
-		if(element) {
-			this.elements.forEach(function (target) {
-				target.outerHTML = element[0].outerHTML;
-			});
-		}
-	};
-
-  Dom.prototype.replaceAll = function (elements) {
-    var source = this.elements[0];
-    
-		if(this.callee === 'create' && elements) {
-			elements.elements.forEach(function (element) {
-				element.outerHTML = source.outerHTML;
-			});
-		}
-	};
 
 })();
 ;(function() {
@@ -816,91 +679,6 @@ DOM = (function () {
   DOM.isWindows = function() {
       return platform === WINDOWS;
   };
-
-})();
-;(function() {
-  'use strict';
-
-  Dom.prototype.children = function() {
-    var children = [];
-
-    this.elements.forEach(function(element) {
-      children.push(element.children);
-    });
-
-    return new Dom(children);
-  };
-
-  Dom.prototype.find = function(selector) {
-    var result;
-
-    if (selector) {
-      result = new Dom(document.querySelectorAll(this.selector + ' ' + selector));
-    }
-
-    return result;
-  };
-
-  Dom.prototype.next = function(filter) {
-    return getElementSibling.call(this, 'next', filter, true);
-  };
-
-  Dom.prototype.prev = function(filter) {
-    return getElementSibling.call(this, 'prev', filter, true);
-  };
-     
-  Dom.prototype.nextAll = function(filter) {
-    return getElementSibling.call(this, 'next', filter);
-  };
-
-  Dom.prototype.prevAll = function(filter) {
-    return getElementSibling.call(this, 'prev', filter);
-  };
-
-  Dom.prototype.siblings = function(filter) {
-    return getAllElementSiblings.call(this, filter);
-  };
-
-  function getElementSibling(position, filter, isSingle) {
-    var result = [],
-      position = position || 'next',
-      prefix = this.callee === 'get' ? '#' : '',
-      selector = document.querySelector(prefix + this.selector),
-      sibling;
-
-    sibling = position === 'next' ?
-      selector.nextElementSibling : selector.previousElementSibling;
-
-    if (sibling) {
-         do {
-          sibling = filter ?
-            (sibling.outerHTML.indexOf(filter) > -1 ? sibling : undefined) : sibling;
-          result.push(sibling);
-          if(isSingle) {
-              break;
-          }
-        } while(sibling = sibling.nextElementSibling)
-    }
-
-    return new Dom(result);
-  }
-      
-  function getAllElementSiblings(filter) {
-    var result = [],
-        sibling;
-    
-    sibling = this.elements[0].parentNode.firstChild;
-    
-    do {
-      sibling = filter ?
-            (sibling.outerHTML.indexOf(filter) > -1 ? sibling : undefined) : sibling;
-      if(sibling !== this.elements[0]) {
-        result.push(sibling);
-      }   
-    } while (sibling = sibling.nextElementSibling)
-    
-    return new Dom(result);    
-  }
 
 })();
 
