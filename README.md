@@ -103,3 +103,23 @@ Get the immediately following sibling of each element in the set of matched elem
 #####.prev()
 
 Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.
+
+#####.nextAll()
+
+Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.
+
+#####.prevAll()
+
+Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.
+
+#####.nextUntil()
+
+Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.
+
+#####.prevUntil()
+
+Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.
+
+#####.closest()
+
+For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.

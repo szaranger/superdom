@@ -9,7 +9,7 @@
         for (var property in styles) {
           if (styles.hasOwnProperty(property)) {
 
-            duration = Mixin.getDuration(duration, 400, 150, 400);  
+            duration = Mixin.getDuration(duration, 400, 150, 400);
 
             animate({
               delay: 10,
@@ -39,10 +39,10 @@
                   calculatedValue = styles[property] * delta,
                   newValue = styles[property];
 
-                if(oldValue < newValue && oldValue < calculatedValue) {
+                if (oldValue < newValue && oldValue < calculatedValue) {
                   element.style[property] = styles[property] * delta + "px";
                 } else {
-                  if(oldValue > newValue) {
+                  if (oldValue > newValue) {
                     element.style[property] = oldValue - (styles[property] * delta) + "px";
                   }
                 }
@@ -77,7 +77,6 @@
         clearInterval(id);
       }
     }, options.delay || 10);
-
   }
 
 })();
