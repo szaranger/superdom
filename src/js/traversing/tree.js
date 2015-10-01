@@ -5,7 +5,9 @@
     var children = [];
 
     this.elements.forEach(function(element) {
-      children.push(element.children);
+      Array.prototype.slice.call(element.children).forEach(function(child) {
+        children.push(child);
+      });
     });
 
     return new Dom(children);
@@ -15,10 +17,18 @@
     var result;
 
     if (selector) {
-      result = new Dom(document.querySelectorAll(this.selector + ' ' + selector));
+      result = document.querySelectorAll(this.selector + ' ' + selector);
     }
 
-    return result;
+    return new Dom(result);
+  };
+
+  Dom.prototype.parent = function(filter) {
+    return getAncestors.call(this, filter, true);
+  };
+
+  Dom.prototype.parents = function(filter) {
+    return getAncestors.call(this, filter);
   };
 
   Dom.prototype.closest = function(filter) {
@@ -79,17 +89,13 @@
           result.push(element);
         }
 
-        /* Break when selector is found - next(), prev() */
-        if (isSingle) {
-          break;
-        }
         /* Break if until selector is found - nextUntil(), prevUntil() */
         if (until) {
           if (sibling.outerHTML.indexOf(filter) > -1) {
             break;
           }
         }
-      } while (sibling = sibling.nextElementSibling)
+      } while (!isSingle && (sibling = sibling.nextElementSibling))
     }
 
     return new Dom(result);
@@ -129,10 +135,29 @@
       } while (sibling = sibling.nextElementSibling)
 
       sibling = lastSibling.parentNode;
-
     }
 
     return new Dom(result);
   }
+
+  function getAncestors(filter, isParent) {
+    var parents = [],
+      parent;
+
+    this.elements.forEach(function(element) {
+      parent = element.parentNode;
+      do {
+        if(filter) {
+          if(parent.outerHTML.indexOf(filter) > -1 ) {
+            parents.push(parent);
+          }
+        } else {
+          parents.push(parent);
+        }
+      } while (!isParent && (parent = parent.parentNode))
+    });
+
+    return new Dom(parents);
+  };
 
 })();

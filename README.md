@@ -96,29 +96,41 @@ Replace each target element with the set of matched elements.
 
 ####Tree Traversal
 
+#####.children()
+
+Get the children of each element in the set of matched elements, optionally filtered by a selector.
+
+#####.closest()
+
+For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
+
+#####.find()
+
+Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
+
 #####.next()
 
 Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.
-
-#####.prev()
-
-Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.
 
 #####.nextAll()
 
 Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.
 
+#####.nextUntil()
+
+Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or superdom object passed.
+
+#####.prev()
+
+Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.
+
 #####.prevAll()
 
 Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.
 
-#####.nextUntil()
-
-Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object passed.
-
 #####.prevUntil()
 
-Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or jQuery object.
+Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or superdom object.
 
 #####.closest()
 

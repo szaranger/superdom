@@ -9,11 +9,15 @@
 		}
 	};
 
-  Dom.prototype.replaceAll = function (elements) {
-    var source = this.elements[0];
-    
-		if(this.callee === 'create' && elements) {
-			elements.elements.forEach(function (element) {
+  Dom.prototype.replaceAll = function (selector) {
+    var source,
+      target;
+
+    if(this.callee === 'create') {
+      source = this.elements[0];
+      target = DOM.query(selector);
+
+			target.elements.forEach(function (element) {
 				element.outerHTML = source.outerHTML;
 			});
 		}

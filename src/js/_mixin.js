@@ -3,7 +3,6 @@ var Mixin = (function() {
 
   var mixin = {
     getDuration: function(duration, def, slow, fast) {
-      
         if (typeof duration === 'string') {
           if (duration === 'slow') {
             duration = slow;
@@ -13,11 +12,8 @@ var Mixin = (function() {
             duration = def;
           }
         }
-
         return duration;
       }
     };
-    
     return mixin;
-
 })();
