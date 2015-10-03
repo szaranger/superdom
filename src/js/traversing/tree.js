@@ -31,6 +31,14 @@
     return getAncestors.call(this, filter);
   };
 
+  Dom.prototype.offsetParent = function(filter) {
+    return getAncestors.call(this, undefined, true, true);
+  };
+
+  Dom.prototype.parentsUntil = function(selector) {
+    return getAncestors.call(this, undefined, undefined, selector);
+  };
+
   Dom.prototype.closest = function(filter) {
     return closest.call(this, filter);
   };
@@ -91,7 +99,7 @@
 
         /* Break if until selector is found - nextUntil(), prevUntil() */
         if (until) {
-          if (sibling.outerHTML.indexOf(filter) > -1) {
+          if (sibling.outerHTML.indexOf(until) > -1) {
             break;
           }
         }
@@ -140,19 +148,33 @@
     return new Dom(result);
   }
 
-  function getAncestors(filter, isParent) {
+  function getAncestors(filter, isParent, until, isPositioned) {
     var parents = [],
-      parent;
+      parent,
+      position;
 
     this.elements.forEach(function(element) {
       parent = element.parentNode;
+
       do {
-        if(filter) {
-          if(parent.outerHTML.indexOf(filter) > -1 ) {
+        if (until) {
+          if (parent.querySelector(until) !== null) {
+            break;
+          }
+        }
+        if (filter) {
+          if (parent.querySelector(filter) !== null) {
             parents.push(parent);
           }
         } else {
-          parents.push(parent);
+          if(isPositioned) {
+            position = parent.style.position;
+            if(position.indexOf('absolute') > -1 || position.indexOf('relative') > -1 || position.indexOf('fixed') > -1 ) {
+              parents.push(parent);
+            }
+          } else {
+            parents.push(parent);
+          }
         }
       } while (!isParent && (parent = parent.parentNode))
     });
