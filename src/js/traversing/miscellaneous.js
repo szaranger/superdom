@@ -13,7 +13,7 @@
     return new Dom([newElement]);
   };
 
- // TODO: Pseudo classes
+  // TODO: Pseudo classes
   Dom.prototype.not = function(selector) {
     var result = [];
 
@@ -24,6 +24,14 @@
     });
 
     return new Dom(result);
+  };
+
+  Dom.prototype.each = function(callback) {
+    if(callback) {
+      this.elements.forEach(function(element, index) {
+        callback(index);
+      });
+    }
   };
 
 })();

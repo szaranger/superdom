@@ -21,13 +21,21 @@
   };
 
   Dom.prototype.height = function(value) {
+    return getDimension.call(this, 'height', value);
+  };
+
+  Dom.prototype.width = function(value) {
+    return getDimension.call(this, 'width', value);
+  };
+
+  function getDimension(dimension, value) {
     var element,
       computedStyle;
 
     if(value) {
       if(typeof value === 'number') {
         this.elements.forEach(function(element) {
-          element.style['height'] = value + 'px';
+          element.style[dimension] = value + 'px';
         });
       }
       return new Dom(this.elements);
@@ -36,9 +44,9 @@
 
       if(element) {
         computedStyle = document.defaultView.getComputedStyle(element)
-        return parseInt(computedStyle.getPropertyValue('height').split('px')[0]);
+        return parseInt(computedStyle.getPropertyValue(dimension).split('px')[0]);
       }
     }
-  };
+  }
 
 })();

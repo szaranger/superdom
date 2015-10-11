@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: {
-          'public/js/superdom.min.js': ['public/js/main.min.js']
+          'public/js/main.min.js': ['public/js/main.min.js']
         }
       }
     },

@@ -4,6 +4,7 @@ var Dom = (function () {
 	return function (elements) {
 		this.elements = elements[0] ? Array.prototype.slice.call(elements) : [];
 		this.callee = elements.callee;
+		this.selector = elements.selector;
 	}
 
 })();
