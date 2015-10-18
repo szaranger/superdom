@@ -26,9 +26,9 @@
       if(object) {
         for (var key in object) {
           if (object.hasOwnProperty(key)) {
-            if (typeof object[key] === 'object')
+            if (typeof object[key] === 'object') {
               DOM.extend(target[key], object[key]);
-            else {
+            } else {
               target[key] = object[key];
             }
           }
