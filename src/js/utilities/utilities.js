@@ -39,4 +39,33 @@
     return target;
   };
 
+  DOM.inArray = function(element, array) {
+    if(element && array) {
+      return array.indexOf(element);
+    }
+  }
+
+  DOM.isArray = function(array) {
+    if(array) {
+      return Array.isArray(array);
+    }
+  }
+
+  DOM.isEmptyObject = function(object) {
+    if(object) {
+      for(var key in object) {
+        if(object.hasOwnProperty(key)){
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
+  DOM.isFunction = function(fn) {
+    if(fn) {
+      return typeof fn === 'function';
+    }
+  }
+
 })();
