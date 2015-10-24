@@ -68,4 +68,56 @@
     }
   }
 
+  DOM.isPlainObject = function(object) {
+    if(object) {
+      return Object.prototype.toString.call(object) === '[object Object]'
+    }
+  }
+
+  DOM.isWindow = function(object) {
+    if(object) {
+      var toString = Object.prototype.toString.call(object);
+      return toString === '[object global]' ||
+        toString === '[object Window]' ||
+        toString === '[object DOMWindow]';
+    }
+  }
+
+  DOM.isXMLDoc = function(element) {
+    var documentElement ;
+
+    if(element) {
+      documentElement = (element ? element.ownerDocument || element : 0).documentElement;
+      return documentElement ? documentElement.nodeName !== "HTML" : false;
+    }
+  }
+
+  DOM.makeArray = function(object) {
+    if(object) {
+      return Array.prototype.slice.call(object);
+    }
+  }
+
+  DOM.map = function(elements, fn) {
+    var elements = elements || [];
+
+    if(fn) {
+      elements = Array.prototype.slice.call(elements);
+      return elements.map(fn);
+    }
+  }
+
+  DOM.merge = function(first, second) {
+    if(first && second && Array.isArray(first)) {
+      return first.concat(second);
+    }
+  }
+
+  DOM.noop = function() {
+  }
+
+  DOM.now = function() {
+    return (new Date).getTime();
+  }
+
 })();

@@ -54,3 +54,7 @@ DOM = (function () {
 
 	return dom;
 })();
+
+if(!window.$) {
+	$ = DOM.query;
+}
