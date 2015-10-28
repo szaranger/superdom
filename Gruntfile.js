@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         dest: 'public/js/main.min.js'
       }
     },
-    uglify: {
+    /*uglify: {
       options: {
         mangle: true,
         sourceMap: true,
@@ -25,11 +25,11 @@ module.exports = function(grunt) {
           'public/js/main.min.js': ['public/js/main.min.js']
         }
       }
-    },
+    },*/
     watch: {
       scripts: {
         files: ['src/js/**/*.js'],
-        tasks: ['concat:js', 'uglify:js'],
+        tasks: ['concat:js'/*, 'uglify:js'*/],
         options: {
           livereload: true,
         }

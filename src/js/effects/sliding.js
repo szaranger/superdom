@@ -51,7 +51,7 @@
       duration = 10;
     }
 
-    duration = Mixin.getDuration(duration, 400, 600, 200);
+    duration = Mixin.duration(duration, 400, 600, 200);
 
     totalFrames = duration / frameRate;
 
@@ -100,7 +100,7 @@
     };
 
     tween();
-    
+
   }
 
 })();

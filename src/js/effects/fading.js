@@ -2,7 +2,7 @@
   'use strict';
 
   Dom.prototype.fadeIn = function(duration, callback) {
-      
+
     this.elements.forEach(function(element) {
       fade(element, duration, 'in', callback);
     });
@@ -11,23 +11,23 @@
   }
 
   Dom.prototype.fadeOut = function(duration, callback) {
-      
+
     this.elements.forEach(function(element) {
       fade(element, duration, 'out', callback);
     });
 
     return new Dom(this.elements);
   }
-  
+
   Dom.prototype.fadeToggle = function(duration, callback) {
-      
+
     this.elements.forEach(function(element) {
       toggle(element, duration, callback);
     });
 
     return new Dom(this.elements);
   };
-    
+
   function toggle (element, duration, callback) {
     fade(element, duration, element.style.opacity !== '0' ? 'out' : 'in', callback);
   }
@@ -48,7 +48,7 @@
       duration = 10;
     }
 
-    duration = Mixin.getDuration(duration, 100, 150, 50);
+    duration = Mixin.duration(duration, 100, 150, 50);
 
     totalFrames = duration / frameRate;
 
@@ -96,6 +96,6 @@
     };
 
     tween();
-    
+
   }
 })();

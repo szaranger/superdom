@@ -9,7 +9,7 @@
         for (var property in styles) {
           if (styles.hasOwnProperty(property)) {
 
-            duration = Mixin.getDuration(duration, 400, 150, 400);
+            duration = Mixin.duration(duration, 400, 150, 400);
 
             animate({
               delay: 10,
