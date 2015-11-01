@@ -9,4 +9,20 @@
     }
   };
 
+  Dom.prototype.load = function(handler) {
+    if (handler){
+      this.elements.forEach(function (element) {
+        element.addEventListener('load', handler);
+      });
+    }
+  };
+
+  Dom.prototype.unload = function(handler) {
+    if (handler){
+      this.elements.forEach(function (element) {
+        element.addEventListener('unload', handler);
+      });
+    }
+  };
+
 })();

@@ -2,7 +2,12 @@ var Dom = (function () {
 	'use strict';
 
 	return function (elements) {
-		this.elements = elements[0] ? Array.prototype.slice.call(elements) : [];
+		if(elements.constructor !== NodeList) {
+			this.elements = [elements]; // if an Object
+		} else {
+			this.elements = elements[0] ? Array.prototype.slice.call(elements) : [];
+		}
+
 		this.callee = elements.callee;
 		this.selector = elements.selector;
 	}
@@ -17,7 +22,8 @@ DOM = (function () {
 			var el,
 				dom;
 
-			el = document.querySelectorAll(selector);
+			el = Mixin.isObject(selector) ? selector : document.querySelectorAll(selector);
+
 			dom = new Dom(el);
 			dom.callee = 'query';
 			dom.selector = selector;

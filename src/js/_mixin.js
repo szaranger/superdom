@@ -2,7 +2,7 @@ var Mixin = (function() {
   'use strict';
 
   var mixin = {
-    
+
     get duration() {
       var duration = arguments[0],
         def = arguments[1],
@@ -29,6 +29,10 @@ var Mixin = (function() {
       });
 
       return object;
+    },
+
+    isObject: function(el) {
+      return typeof(el) === 'object';
     },
 
     slice: function(array) {
