@@ -55,7 +55,9 @@ var Mixin = (function() {
           }
         }
       }
-    }
+    },
+
+    emptyFn: function() {}
   };
 
   return mixin;
