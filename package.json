@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "grunt serve",
-    "test": "grunt test"
+    "test": "grunt test",
+    "proc": "lsof -i tcp:9001"
   },
   "repository": {
     "type": "git",
