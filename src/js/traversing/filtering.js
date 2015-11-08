@@ -83,4 +83,12 @@
     return new Dom(elements);
   };
 
+  Dom.prototype.getEl = function() {
+    var elements = this.elements;
+
+    if(elements) {
+      return elements[0];
+    }
+  };
+
 })();

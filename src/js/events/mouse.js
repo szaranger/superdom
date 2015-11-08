@@ -1,64 +1,64 @@
 (function() {
   'use strict';
 
-  Dom.prototype.click = function(callback) {
+  Dom.prototype.click = function(handler) {
     this.elements.forEach(function (element) {
-      element.onclick = callback;
+      element.onclick = handler;
     });
   };
 
-  Dom.prototype.dblclick = function(callback) {
+  Dom.prototype.dblclick = function(handler) {
     this.elements.forEach(function (element) {
-      element.ondblclick = callback;
+      element.ondblclick = handler;
     });
   };
 
-  Dom.prototype.hover = function(callback) {
+  Dom.prototype.hover = function(handler) {
     this.elements.forEach(function (element) {
-      element.onmouseover = callback;
-      element.onmouseout = callback;
+      element.onmouseover = handler;
+      element.onmouseout = handler;
     });
   };
 
-  Dom.prototype.mouseenter = function(callback) {
+  Dom.prototype.mouseenter = function(handler) {
     this.elements.forEach(function (element) {
-      element.onmouseover = callback;
+      element.onmouseover = handler;
     });
   };
 
-  Dom.prototype.mouseleave = function(callback) {
+  Dom.prototype.mouseleave = function(handler) {
     this.elements.forEach(function (element) {
-      element.onmouseout = callback;
+      element.onmouseout = handler;
     });
   };
 
-  Dom.prototype.mousedown = function(callback) {
+  Dom.prototype.mousedown = function(handler) {
     this.elements.forEach(function (element) {
-      element.onmousedown = callback;
+      element.onmousedown = handler;
     });
   };
 
-  Dom.prototype.mousemove = function(callback) {
+  Dom.prototype.mousemove = function(handler) {
     this.elements.forEach(function (element) {
-      element.onmousemove = callback;
+      element.onmousemove = handler;
     });
   };
 
-  Dom.prototype.mouseout = function(callback) {
+  Dom.prototype.mouseout = function(handler) {
     this.elements.forEach(function (element) {
-      element.onmouseout = callback;
+      element.onmouseout = handler;
     });
   };
 
-  Dom.prototype.mouseover = function(callback) {
+  Dom.prototype.mouseover = function(handler) {
     this.elements.forEach(function (element) {
-      element.onmouseover = callback;
+      element.onmouseover = handler;
     });
   };
 
-  Dom.prototype.mouseup = function(callback) {
+  Dom.prototype.mouseup = function(handler) {
     this.elements.forEach(function (element) {
-      element.onmouseup = callback;
+      element.onmouseup = handler;
     });
   };
 
