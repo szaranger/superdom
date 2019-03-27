@@ -32,106 +32,106 @@ Create a deep copy of the set of matched elements.
 
 The `.clone()` method performs a deep copy of the set of matched elements, meaning that it copies the matched elements as well as all of their descendant elements and text nodes.
 
-###Effects
+### Effects
 
-####Sliding
+#### Sliding
 
-#####.slideDown()
+##### .slideDown()
 
 Display the matched elements with a sliding motion.
 
-#####.slideToggle()
+##### .slideToggle()
 
 Display or hide the matched elements with a sliding motion.
 
-#####.slideUp()
+##### .slideUp()
 
 Hide the matched elements with a sliding motion.
 
-####Events
+#### Events
 
-#####.click()
+##### .click()
 
 Bind an event handler to the `click` JavaScript event, or trigger that event on an element.
 
-#####.dblclick()
+##### .dblclick()
 
 Bind an event handler to the `dblclick` JavaScript event, or trigger that event on an element.
 
-#####.hover()
+##### .hover()
 
 Bind one or two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements.
 
-#####.mousedown()
+##### .mousedown()
 
 Bind an event handler to the “mousedown” JavaScript event, or trigger that event on an element.
 
-#####.mouseenter()
+##### .mouseenter()
 
 Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.
 
-#####.mouseleave()
+##### .mouseleave()
 
 Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.
 
-#####.mousemove()
+##### .mousemove()
 Bind an event handler to the “mousemove” JavaScript event, or trigger that event on an element.
 
-#####.on()
+##### .on()
 Bind an event handler function for one or more events to the selected elements.
 
 ####Removal
 
-#####.unwrap()
+##### .unwrap()
 
 Remove the parents of the set of matched elements from the DOM, leaving the matched elements in their place.
 
-####Replacement
+#### Replacement
 
 Replace each target element with the set of matched elements.
 
-####Platform
+#### Platform
 
-###Traversing
+### Traversing
 
-####Tree Traversal
+#### Tree Traversal
 
-#####.children()
+##### .children()
 
 Get the children of each element in the set of matched elements, optionally filtered by a selector.
 
-#####.closest()
+##### .closest()
 
 For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
 
-#####.find()
+##### .find()
 
 Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
 
-#####.next()
+##### .next()
 
 Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector.
 
-#####.nextAll()
+##### .nextAll()
 
 Get all following siblings of each element in the set of matched elements, optionally filtered by a selector.
 
-#####.nextUntil()
+##### .nextUntil()
 
 Get all following siblings of each element up to but not including the element matched by the selector, DOM node, or superdom object passed.
 
-#####.prev()
+##### .prev()
 
 Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector.
 
-#####.prevAll()
+##### .prevAll()
 
 Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector.
 
-#####.prevUntil()
+##### .prevUntil()
 
 Get all preceding siblings of each element up to but not including the element matched by the selector, DOM node, or superdom object.
 
-#####.closest()
+##### .closest()
 
 For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
