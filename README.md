@@ -22,11 +22,11 @@ npm test
 
 ## API Documentation
 
-###Manipulation
+### Manipulation
 
-####Copying
+#### Copying
 
-#####.clone()
+##### .clone()
 
 Create a deep copy of the set of matched elements.
 
